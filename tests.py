@@ -46,9 +46,10 @@ def test_get_region_from_filters(filters, expected_value):
     assert utils.get_region_from_filters(filters) == expected_value
 
 
-@pytest.mark.parametrize('region_part,expected_value', zip(REGIONS_TO_TEST, ACTUAL_REGIONS))
-def test_get_region_from_autosuggest(region_part, expected_value):
-    assert utils.get_region_from_autosuggest(region_part) == expected_value
+def test_get_region_from_autosuggest():
+    with mock.patch("otodom.utils.json.loads") as json_loads:
+        utils.get_region_from_autosuggest("gda")
+        json_loads.called
 
 
 @pytest.mark.parametrize("main_category", ["wynajem", "sprzedaz"])
