@@ -68,7 +68,7 @@ def test_get_response_for_url():
         assert get.called
 
 
-@pytest.mark.skipif(sys.version_info < (3, 1), reason="requires Python3")
+@pytest.mark.skipif(sys.version_info <= (3, 1), reason="requires Python3")
 @pytest.mark.parametrize(
     'markup_path,expected_value', [
         ("test_data/markup_no_offers", "95c3ad18f9c716209fdfc5d73b13f4a64fd12fc7ca9b6d0d4a5f60ce80b574b3"),

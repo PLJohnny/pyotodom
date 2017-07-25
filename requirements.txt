@@ -1,6 +1,6 @@
 mock
 requests
 beautifulsoup4
-https://github.com/limebrains/scrapper-helpers/archive/master.zip
+#https://github.com/limebrains/scrapper-helpers/archive/master.zip#egg=scrapper-helpers
 pytest
 pytest-cov
