@@ -1,10 +1,18 @@
-import logging
-from urllib.parse import urlparse
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
+import logging
+import sys
 from bs4 import BeautifulSoup
 
 from otodom import WHITELISTED_DOMAINS
 from otodom.utils import get_response_for_url, get_url
+
+if sys.version_info < (3, 3):
+    from urlparse import urlparse
+else:
+    from urllib.parse import urlparse
+
 
 log = logging.getLogger(__file__)
 
