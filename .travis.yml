@@ -23,5 +23,8 @@ install:
 - pip install -U tox
 - pip install coveralls
 language: python
+python:
+  - "3.2"
+  - "3.3"
 script:
 - tox
