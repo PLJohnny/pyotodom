@@ -51,8 +51,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'pyotodom'
-copyright = '2017, Jan Baryła'
-author = 'Jan Baryła'
+copyright = u'2017, Jan Baryła'
+author = u'Jan Baryła'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

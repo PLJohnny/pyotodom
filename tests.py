@@ -16,6 +16,11 @@ ACTUAL_REGIONS = [
     {"voivodeship": "pomorskie"}, {"[street_id]": 15544, "city": "sopot_208"}, {}
 ]
 
+@pytest.fixture
+def get_region_from_autosuggest(region_part):
+    for key, value in ACTUAL_REGIONS. items():
+        yield {key: value}
+        assert 0
 
 @pytest.mark.parametrize(
     'text,dic,expected_value', [
