@@ -23,23 +23,6 @@ ACTUAL_REGIONS = [
     {"voivodeship": "pomorskie"}, {"[street_id]": 15544, "city": "sopot_208"}, {}
 ]
 
-@pytest.mark.parametrize(
-    'text,dic,expected_value', [
-        ('ala', {'a': 'b'}, 'blb'),
-        ('Gdańsk', {'ń': 'n'}, 'Gdansk')
-     ])
-def test_replace_all(text, dic, expected_value):
-    assert utils.replace_all(text, dic) == expected_value
-
-
-@pytest.mark.parametrize(
-    'text,expected_value', [
-        ('ala MA KoTa', 'ala-ma-kota'),
-        ('Gdańsk', 'gdansk')
-     ])
-def test_normalize_text(text, expected_value):
-    assert utils.normalize_text(text) == expected_value
-
 
 @pytest.mark.parametrize('filters,expected_value', zip(ACTUAL_REGIONS, ACTUAL_REGIONS))
 def test_get_region_from_filters(filters, expected_value):
