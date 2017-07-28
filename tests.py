@@ -356,7 +356,6 @@ def test_get_offer_information(url, context):
                 mock.patch("otodom.offer.get_cookie_from") as get_cookie_from, \
                 mock.patch("otodom.offer.get_csrf_token") as get_csrf_token, \
                 mock.patch("otodom.offer.get_offer_phone_numbers") as get_offer_phone_numbers, \
-                mock.patch("otodom.utils.replace_all") as replace_all, \
                 mock.patch("otodom.offer.get_offer_ninja_pv") as get_offer_ninja_pv, \
                 mock.patch("otodom.offer.get_offer_total_floors"), \
                 mock.patch("otodom.offer.get_offer_apartment_details"):
@@ -365,8 +364,7 @@ def test_get_offer_information(url, context):
             assert BeautifulSoup.called
             assert get_cookie_from.called
             assert get_csrf_token.called
-            assert get_offer_phone_numbers
-            assert replace_all
-            assert get_offer_ninja_pv
+            assert get_offer_phone_numbers.called
+            assert get_offer_ninja_pv.called
 
 
