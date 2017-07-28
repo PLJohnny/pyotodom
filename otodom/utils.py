@@ -11,6 +11,7 @@ try:
     from __builtin__ import unicode
 except ImportError:
     unicode = lambda x, *args: x
+
 from scrapper_helpers.utils import caching, replace_all, normalize_text, key_sha1
 
 from otodom import BASE_URL
