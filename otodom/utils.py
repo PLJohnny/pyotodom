@@ -11,7 +11,7 @@ try:
 except ImportError:
     unicode = lambda x, *args: x
 
-from scrapper_helpers.utils import caching, normalize_text, key_sha1
+from scrapper_helpers.utils import caching, normalize_text, key_sha1, get_random_user_agent
 
 from otodom import BASE_URL
 
@@ -76,21 +76,6 @@ def get_region_from_filters(filters):
     return region_dict
 
 
-def _float(number, default=None):
-    return get_number_from_string(number, float, default)
-
-
-def _int(number, default=None):
-    return get_number_from_string(number, int, default)
-
-
-def get_number_from_string(s, number_type, default):
-    try:
-        return number_type(s.replace(",", "."))
-    except ValueError:
-        return default
-
-
 def get_url(main_category, detail_category, region, ads_per_page="", page=None, **filters):
     """
     This method builds a ready-to-use url based on the input parameters.
@@ -151,7 +136,7 @@ def get_response_for_url(url):
     :param url: an url, most likely from the :meth:`scrape.utils.get_url` method
     :return: a requests.response object
     """
-    return requests.get(url)
+    return requests.get(url, headers={'User-Agent': get_random_user_agent()})
 
 
 def get_cookie_from(response):
