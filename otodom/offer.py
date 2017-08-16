@@ -325,16 +325,19 @@ def get_offer_information(url, context=None):
     # getting meta values
     if context:
         cookie = get_cookie_from(response)
-        csrf_token = get_csrf_token(content)
-        offer_id = context['offer_id']
+        try:
+            csrf_token = get_csrf_token(content)
+            offer_id = context['offer_id']
+        except AttributeError:
+            csrf_token = ''
+            offer_id = ''
 
         # getting offer details
         try:
             phone_numbers = get_offer_phone_numbers(offer_id, cookie, csrf_token)
         except KeyError as e:
             # offer was not present any more
-            log.exception(e)
-            return {}
+            phone_numbers = []
 
         phone_number_replace_dict = {u'\xa0': "", " ": "", "-": "", "+48": ""}
         phone_numbers = sum([replace_all(num, phone_number_replace_dict).split(".") for num in phone_numbers], [])
