@@ -236,7 +236,9 @@ def get_offer_details(html_parser):
     """
     try:
         f = html_parser.find(class_="text-details").text
-        return [{d.split(': ')[0].strip(): d.split(': ')[1].strip()} for d in f.split("\n") if not re.match(r'^\s*$', d)]
+        return (
+            [{d.split(': ')[0].strip(): d.split(': ')[1].strip()} for d in f.split("\n") if not re.match(r'^\s*$', d)]
+        )
     except AttributeError:
         return {}
 
@@ -249,7 +251,7 @@ def get_offer_title(html_parser):
     :rtype: string
     :return: The offer title
     """
-    title = html_parser.find("title").text
+    title = html_parser.find("meta", attrs={"property": "og:title"})["content"]
     return title
 
 
